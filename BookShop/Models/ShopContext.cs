@@ -1,4 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using BookShop.Models;
+using System;
+using System.Collections.Generic;
 
 namespace BookShop.Models
 {

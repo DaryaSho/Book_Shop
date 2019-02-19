@@ -10,8 +10,15 @@ namespace BookShop.Controllers
 {
     public class HomeController : Controller
     {
+        private ShopContext sp;
+
+        //public HomeController(ShopContext s)
+        //{
+        //    sp = s;
+        //}
         public IActionResult Index()
         {
+            
             return View();
         }
 
