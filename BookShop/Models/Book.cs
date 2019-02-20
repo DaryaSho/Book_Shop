@@ -1,5 +1,7 @@
 ﻿
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace BookShop.Models
 { 
@@ -11,7 +13,8 @@ namespace BookShop.Models
         public Image Photo { get; set; }
         public int Price { get; set; }
         public Categor Category { get; set; }
-        public List<Genr> Genre { get; set; }
+        public ICollection<GenrBook> GenrBooks { get; set; }
         public Publisher Publisher { get; set; }
+        public Author Author { get; set; }
     }
 }
