@@ -12,10 +12,10 @@ namespace BookShop.Controllers
     {
         private ShopContext sp;
 
-        //public HomeController(ShopContext s)
-        //{
-        //    sp = s;
-        //}
+        public HomeController(ShopContext s)
+        {
+            sp = s;
+        }
         public IActionResult Index()
         {
             

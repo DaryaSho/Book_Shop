@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BookShop.Dtos;
+using BookShop.Managers;
+using BookShop.Managers.Interfaces;
 using BookShop.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,6 +32,7 @@ namespace BookShop
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ShopContext>(options =>
                 options.UseSqlServer(connection));
+            services.AddTransient<IBase<PublisherDto>, PublisherManager>();
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -53,7 +57,7 @@ namespace BookShop
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            app.UseCors(builder => builder.AllowAnyOrigin());
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
