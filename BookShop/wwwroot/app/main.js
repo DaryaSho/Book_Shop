@@ -4,9 +4,12 @@ import App from './App.vue';
 //import Layout from './components/Layout/Header.vue';
 import Layout from './Layout/Header.vue';
 import VueCroppie from 'vue-croppie';
+import Publisher from './components/publisher.vue';
+
 
 import BootstrapVue from 'bootstrap-vue';
 
+//import { store } from './store';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 //import './styles/main.css';
@@ -30,9 +33,12 @@ const router = new VueRouter({
 
 new Vue({
     el: '#app',
-    template: "<div><layout></layout></div>",
+    //template: "<div><layout></layout></div>",
+    template: "<div><publisher></publisher></div>",
     components: {
-        'layout': Layout
+        'layout': Layout,
+        'publisher': Publisher
     },
     router
+   // store
 })
