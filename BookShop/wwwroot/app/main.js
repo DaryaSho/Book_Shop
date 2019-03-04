@@ -6,13 +6,10 @@ import Layout from './Layout/Header.vue';
 import VueCroppie from 'vue-croppie';
 import Publisher from './components/publisher.vue';
 
-
 import BootstrapVue from 'bootstrap-vue';
 
-//import { store } from './store';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
-//import './styles/main.css';
 
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
@@ -40,5 +37,4 @@ new Vue({
         'publisher': Publisher
     },
     router
-   // store
 })

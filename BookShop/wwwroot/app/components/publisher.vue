@@ -1,8 +1,11 @@
 ﻿<template>
     <div class="info">
-        <b>Жанры</b><br>
-        <span > {{title}}  {{info}}  </span><br>
-      </div>
+        Жанры
+        <select v-model="selected">
+        <option v-for="entry in list" :key="entry.id" >{{entry.title}}</option>
+        </select>
+        <span>{{info}}</span>
+    </div>
 </template>
 
 <script>
@@ -12,21 +15,20 @@ import storeManager from '../../api/storeManager.js';
 export default {
     data() {
         return {
+            list: null,
             title: null,
             info: null,
+            selected:''
         };
     },
     methods:{
-        async info() {
-            let saved = await storeManager.info({original:this.original});
-            this.title = saved.title;
-            this.info= saved.info;
+        async inform() {
+            this.list = await storeManager.information();
         }
     },
     mounted() {
-        this.info();
+        this.inform();
     }
-
 };
 </script>
 
