@@ -11,7 +11,7 @@ namespace BookShop.Managers.Interfaces
 
         T Save(T member);
         T Update(T member);
-        T Delete(T member);
+      //  void Delete(T member);
 
     }
 }

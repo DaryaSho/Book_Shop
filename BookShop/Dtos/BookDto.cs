@@ -19,10 +19,12 @@ namespace BookShop.Dtos
         public int Price { get; set; }
         [Required]
         public CategorDto Category { get; set; }
-        [Required]
-        public List<GenrDto> Genre { get; set; }
+       // [Required]
+       // public ICollection<GenrDto> Genrs { get; set; }
         [Required]
         public PublisherDto Publisher { get; set; }
+        [Required]
+        public AuthorDto Author { get; set; }
     }
 
     public static class BookDtoExtensions
@@ -31,20 +33,21 @@ namespace BookShop.Dtos
         {
             var b = new Book()
             {
-                Id=dto.Id,
+                Id = dto.Id,
                 Title = dto.Title,
                 Info = dto.Info,
                 Photo = dto.Photo.ToImage(),
                 Price = dto.Price,
                 Category = dto.Category.ToCategor(),
-                Publisher = dto.Publisher.ToPublisc()
+                Publisher = dto.Publisher.ToPublisc(),
+                Author = dto.Author.ToAuthor()
             };
-            List<GenrDto> genre = dto.Genre;
-            b.Genre = new List<Genr>();
-            foreach (var p in genre)
-            {
-                b.Genre.Add(p.ToGenr());
-            }
+            //ICollection<GenrDto> genre = dto.Genrs;
+            //b.GenrBooks = new List<GenrBook>();
+            //foreach (var p in genre)
+            //{
+            //    b.GenrBooks.Add(new GenrBook() { });
+            //}
             return b;
         }
 
@@ -57,15 +60,16 @@ namespace BookShop.Dtos
             dto.Price = a.Price;
             dto.Publisher = a.Publisher.ToPublisherDto();
             dto.Category = a.Category.ToCategorDto();
-            foreach (var p in a.Genre)
-            {
-                dto.Genre.Add(p.ToGenrDto());
-            }
+            dto.Author = a.Author.ToAuthorDto();
+            //foreach (var p in a.GenrBooks)
+            //{
+            //    dto.Genrs.Add(p.ToGenrDto());
+            //}
             return dto;
         }
         public static BookDto ToBookDto(this Book a)
         {
-           var b = new BookDto()
+            var b = new BookDto()
             {
 
                 Id = a.Id,
@@ -74,14 +78,15 @@ namespace BookShop.Dtos
                 Photo = a.Photo.ToImageDto(),
                 Price = a.Price,
                 Publisher = a.Publisher.ToPublisherDto(),
-                Category = a.Category.ToCategorDto()
+                Category = a.Category.ToCategorDto(),
+                Author = a.Author.ToAuthorDto()
             };
-           List<Genr> genre = a.Genre;
-            b.Genre = new List<GenrDto>();
-            foreach (var p in genre)
-            {
-                b.Genre.Add(p.ToGenrDto());
-            }
+            //ICollection<GenrBook> genre = a.GenrBooks;
+            //b.GenrBooks = new List<GenrBookDto>();
+            //foreach (var p in genre)
+            //{
+            //    b.GenrBooks.Add(p.ToGenrBookDto());
+            //}
             return b;
 
         }

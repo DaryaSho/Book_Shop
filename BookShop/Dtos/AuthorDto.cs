@@ -56,5 +56,21 @@ namespace BookShop.Dtos
 
             return dto;
         }
+
+        public static AuthorDto ToAuthorDto(this Author dto)
+        {
+            var author = new AuthorDto()
+            {
+                Id = dto.Id,
+                FirstName = dto.FirstName,
+                LastName = dto.LastName,
+                MiddleName = dto.MiddleName,
+                Info = dto.Info,
+                Photo = dto.Photo.ToImageDto(),
+                Birthday = dto.Birthday,
+                Born = dto.Born
+            };
+            return author;
+        }
     }
 }
